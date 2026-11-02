@@ -13,6 +13,7 @@ Projeto de portfólio de Felipe Pacheco, criado para aplicar conhecimentos de de
 - Contagem de resultados.
 - Mensagem para buscas sem resultados.
 - Botão para limpar os filtros.
+- Detalhes expansíveis dos produtos, com marca, aplicação e descrição demonstrativas.
 
 ## Tecnologias
 
@@ -96,7 +97,7 @@ Esta versão ainda não possui banco de dados, autenticação, cadastro de produ
 
 ## Próximas etapas
 
-- [ ] Exibir detalhes dos produtos.
+- [x ] Exibir detalhes dos produtos.
 - [ ] Implementar cadastro e edição de produtos.
 - [ ] Integrar um banco de dados.
 - [ ] Implementar autenticação para a área administrativa.

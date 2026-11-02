@@ -74,7 +74,8 @@ A implementação inicial passou pelas duas verificações.
 
 ## Estrutura principal
 
-- `app/page.tsx`: página inicial e dados demonstrativos.
+- `app/page.tsx`: página inicial e composição do catálogo.
+- `lib/produtos.ts`: tipo Produto e dados demonstrativos.
 - `app/components/Catalogo.tsx`: catálogo interativo com busca e filtros.
 - `app/globals.css`: estilos globais.
 - `app/layout.tsx`: layout principal da aplicação.

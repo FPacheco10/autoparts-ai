@@ -1,40 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-type Produto = {
-  codigo: string;
-  nome: string;
-  categoria: string;
-  descricao: string;
-};
-
-type DetalhesProduto = {
-  marca: string;
-  aplicacao: string;
-  descricaoCompleta: string;
-};
-
-const detalhesPorCodigo: Record<string, DetalhesProduto> = {
-  "AP-001": {
-    marca: "Marca demonstrativa",
-    aplicacao: "Veículo de exemplo — aplicação não validada.",
-    descricaoCompleta:
-      "Item demonstrativo da categoria de freios. Em um catálogo real, os detalhes devem incluir fabricante, referência e aplicação confirmada no catálogo técnico.",
-  },
-  "AP-002": {
-    marca: "Marca demonstrativa",
-    aplicacao: "Motor de exemplo — aplicação não validada.",
-    descricaoCompleta:
-      "Item demonstrativo para manutenção do motor. Em um catálogo real, a seleção deve considerar a referência do fabricante e as especificações do veículo.",
-  },
-  "AP-003": {
-    marca: "Marca demonstrativa",
-    aplicacao: "Suspensão de exemplo — aplicação não validada.",
-    descricaoCompleta:
-      "Item demonstrativo da categoria de suspensão. Em um catálogo real, os detalhes devem informar posição de montagem, referência e aplicação confirmada.",
-  },
-};
+import type { Produto } from "@/lib/produtos";
 
 function normalizar(texto: string) {
   return texto
@@ -135,84 +102,81 @@ export default function Catalogo({
 
       {produtosFiltrados.length > 0 ? (
         <div className="mt-6 grid items-start gap-5 md:grid-cols-3">
-          {produtosFiltrados.map((produto) => {
-            const detalhes = detalhesPorCodigo[produto.codigo];
+          {produtosFiltrados.map((produto) => (
+            <article
+              key={produto.codigo}
+              className="min-w-0 rounded-2xl border border-white/10 bg-slate-900 p-6"
+            >
+              <span className="rounded-lg bg-slate-800 px-3 py-1 text-xs font-medium text-orange-300">
+                {produto.categoria}
+              </span>
 
-            return (
-              <article
-                key={produto.codigo}
-                className="min-w-0 rounded-2xl border border-white/10 bg-slate-900 p-6"
-              >
-                <span className="rounded-lg bg-slate-800 px-3 py-1 text-xs font-medium text-orange-300">
-                  {produto.categoria}
-                </span>
+              <h3 className="mt-5 text-xl font-semibold">
+                {produto.nome}
+              </h3>
 
-                <h3 className="mt-5 text-xl font-semibold">
-                  {produto.nome}
-                </h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                {produto.descricao}
+              </p>
 
-                <p className="mt-3 text-sm leading-6 text-slate-400">
-                  {produto.descricao}
-                </p>
+              <p className="mt-6 border-t border-white/10 pt-4 font-mono text-xs text-slate-500">
+                Código de exemplo: {produto.codigo}
+              </p>
 
-                <p className="mt-6 border-t border-white/10 pt-4 font-mono text-xs text-slate-500">
-                  Código de exemplo: {produto.codigo}
-                </p>
+              <details className="group mt-5 border-t border-white/10 pt-4">
+                <summary className="cursor-pointer rounded-lg py-2 text-sm font-semibold text-orange-400 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-400">
+                  <span className="group-open:hidden">
+                    Ver detalhes
+                  </span>
 
-                <details className="group mt-5 border-t border-white/10 pt-4">
-                  <summary className="cursor-pointer rounded-lg py-2 text-sm font-semibold text-orange-400 hover:text-orange-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-400">
-                    <span className="group-open:hidden">
-                      Ver detalhes
-                    </span>
-                    <span className="hidden group-open:inline">
-                      Ocultar detalhes
-                    </span>
-                    <span className="sr-only">
-                      {" "}de {produto.nome}
-                    </span>
-                  </summary>
+                  <span className="hidden group-open:inline">
+                    Ocultar detalhes
+                  </span>
 
-                  <div className="mt-4 space-y-5">
-                    <dl className="space-y-4 text-sm">
-                      <div>
-                        <dt className="font-medium text-slate-200">
-                          Marca
-                        </dt>
-                        <dd className="mt-1 text-slate-400">
-                          {detalhes?.marca ?? "Não informada"}
-                        </dd>
-                      </div>
+                  <span className="sr-only">
+                    {" "}de {produto.nome}
+                  </span>
+                </summary>
 
-                      <div>
-                        <dt className="font-medium text-slate-200">
-                          Aplicação demonstrativa
-                        </dt>
-                        <dd className="mt-1 leading-6 text-slate-400">
-                          {detalhes?.aplicacao ?? "Não informada"}
-                        </dd>
-                      </div>
+                <div className="mt-4 space-y-5">
+                  <dl className="space-y-4 text-sm">
+                    <div>
+                      <dt className="font-medium text-slate-200">
+                        Marca
+                      </dt>
+                      <dd className="mt-1 text-slate-400">
+                        {produto.marca}
+                      </dd>
+                    </div>
 
-                      <div>
-                        <dt className="font-medium text-slate-200">
-                          Descrição completa
-                        </dt>
-                        <dd className="mt-1 leading-6 text-slate-400">
-                          {detalhes?.descricaoCompleta ??
-                            produto.descricao}
-                        </dd>
-                      </div>
-                    </dl>
+                    <div>
+                      <dt className="font-medium text-slate-200">
+                        Aplicação demonstrativa
+                      </dt>
+                      <dd className="mt-1 leading-6 text-slate-400">
+                        {produto.aplicacao}
+                      </dd>
+                    </div>
 
-                    <p className="rounded-xl border border-orange-400/20 bg-orange-400/5 p-3 text-xs leading-6 text-orange-200">
-                      Dados fictícios para demonstração. Confirme a
-                      compatibilidade no catálogo técnico antes de
-                      qualquer compra ou instalação.
-                    </p>
-                  </div>
-                </details>
-              </article>
-            );
-          })}
+                    <div>
+                      <dt className="font-medium text-slate-200">
+                        Descrição completa
+                      </dt>
+                      <dd className="mt-1 leading-6 text-slate-400">
+                        {produto.descricaoCompleta}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <p className="rounded-xl border border-orange-400/20 bg-orange-400/5 p-3 text-xs leading-6 text-orange-200">
+                    Dados fictícios para demonstração. Confirme a
+                    compatibilidade no catálogo técnico antes de
+                    qualquer compra ou instalação.
+                  </p>
+                </div>
+              </details>
+            </article>
+          ))}
         </div>
       ) : (
         <div className="mt-6 rounded-2xl border border-dashed border-slate-700 p-10 text-center">

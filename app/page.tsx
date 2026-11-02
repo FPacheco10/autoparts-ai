@@ -1,26 +1,6 @@
-import Catalogo from "./components/Catalogo";
 import Link from "next/link";
-
-const produtos = [
-  {
-    codigo: "AP-001",
-    nome: "Pastilha de freio dianteira",
-    categoria: "Freios",
-    descricao: "Exemplo de produto para o catálogo de peças.",
-  },
-  {
-    codigo: "AP-002",
-    nome: "Filtro de óleo",
-    categoria: "Motor",
-    descricao: "Exemplo de produto para manutenção preventiva.",
-  },
-  {
-    codigo: "AP-003",
-    nome: "Amortecedor dianteiro",
-    categoria: "Suspensão",
-    descricao: "Exemplo de produto para o sistema de suspensão.",
-  },
-];
+import Catalogo from "./components/Catalogo";
+import { produtos } from "@/lib/produtos";
 
 export default function Home() {
   return (
@@ -28,8 +8,8 @@ export default function Home() {
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-5 px-6 py-6">
           <Link href="/" className="text-xl font-bold tracking-tight">
-  AutoParts <span className="text-orange-400">AI</span>
-</Link>
+            AutoParts <span className="text-orange-400">AI</span>
+          </Link>
 
           <nav aria-label="Menu principal" className="flex gap-6 text-sm">
             <a

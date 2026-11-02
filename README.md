@@ -16,6 +16,8 @@ Projeto de portfólio de Felipe Pacheco, criado para aplicar conhecimentos de de
 - Detalhes expansíveis dos produtos, com marca, aplicação e descrição demonstrativas.
 - Cadastro demonstrativo com validação de campos e código único.
 - Persistência dos cadastros no navegador usando localStorage.
+- Edição dos produtos cadastrados, mantendo o código fixo.
+- Exclusão de produtos cadastrados com confirmação.
 
 ## Tecnologias
 
@@ -103,8 +105,8 @@ Esta versão ainda não possui banco de dados, autenticação, edição de
 produtos, integração com WhatsApp ou recursos de inteligência artificial.
 ## Próximas etapas
 
-- [x ] Exibir detalhes dos produtos.
-- [ ] Implementar cadastro e edição de produtos.
+- [x] Exibir detalhes dos produtos.
+- [x] Implementar cadastro e edição de produtos.
 - [ ] Integrar um banco de dados.
 - [ ] Implementar autenticação para a área administrativa.
 - [ ] Integrar o atendimento pelo WhatsApp.

@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AutoParts AI
 
-## Getting Started
+Catálogo demonstrativo de autopeças com busca por nome e filtro por categoria, desenvolvido com Next.js, React e TypeScript.
 
-First, run the development server:
+Projeto de portfólio de Felipe Pacheco, criado para aplicar conhecimentos de desenvolvimento web em um cenário de venda de autopeças.
+
+## Funcionalidades disponíveis
+
+- Interface responsiva com tema escuro.
+- Listagem de produtos demonstrativos.
+- Busca por nome, ignorando acentos e diferenças entre maiúsculas e minúsculas.
+- Filtro por categoria combinado com a busca.
+- Contagem de resultados.
+- Mensagem para buscas sem resultados.
+- Botão para limpar os filtros.
+
+## Tecnologias
+
+- Next.js — App Router
+- React
+- TypeScript
+- Tailwind CSS
+- ESLint
+- Git e GitHub
+
+## Como executar
+
+É necessário ter Node.js e npm instalados em uma versão compatível com o projeto.
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/FPacheco10/autoparts-ai.git
+```
+
+Entre na pasta:
+
+```bash
+cd autoparts-ai
+```
+
+Instale as dependências a partir do arquivo de lock:
+
+```bash
+npm ci
+```
+
+Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra o endereço informado no terminal, normalmente http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+No PowerShell, se a execução de `npm.ps1` estiver bloqueada, use `npm.cmd` no lugar de `npm`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Verificações
 
-## Learn More
+Verificar o código da página e do catálogo:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npx eslint app/page.tsx app/components/Catalogo.tsx
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Gerar a versão de produção e verificar os tipos:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+A implementação inicial passou pelas duas verificações.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Estrutura principal
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/page.tsx`: página inicial e dados demonstrativos.
+- `app/components/Catalogo.tsx`: catálogo interativo com busca e filtros.
+- `app/globals.css`: estilos globais.
+- `app/layout.tsx`: layout principal da aplicação.
+
+## Conceitos aplicados
+
+- Composição de Server e Client Components.
+- Estado e eventos com React.
+- Tipagem de propriedades com TypeScript.
+- Renderização de listas com `map`.
+- Filtragem de dados com `filter`.
+- Campos com rótulos e indicação da quantidade de resultados.
+- Layout responsivo com Tailwind CSS.
+
+## Limitações atuais
+
+Os produtos são exemplos definidos no código. Não representam estoque, preços ou compatibilidade reais.
+
+Esta versão ainda não possui banco de dados, autenticação, cadastro de produtos, integração com WhatsApp ou recursos de inteligência artificial.
+
+## Próximas etapas
+
+- [ ] Exibir detalhes dos produtos.
+- [ ] Implementar cadastro e edição de produtos.
+- [ ] Integrar um banco de dados.
+- [ ] Implementar autenticação para a área administrativa.
+- [ ] Integrar o atendimento pelo WhatsApp.
+- [ ] Avaliar recursos de inteligência artificial para o atendimento.
+
+## Autor
+
+Desenvolvido por **Felipe Pacheco**.
+
+GitHub: https://github.com/FPacheco10

@@ -95,6 +95,20 @@ A implementação inicial passou pelas duas verificações.
 - Campos com rótulos e indicação da quantidade de resultados.
 - Layout responsivo com Tailwind CSS.
 
+## Integração com Supabase
+
+O catálogo público consulta a tabela `produtos` do Supabase,
+com carregamento e tratamento de falhas.
+
+O gerenciamento ainda utiliza localStorage. Os produtos cadastrados
+nessa área ainda não são enviados ao banco.
+
+Para executar, crie `.env.local` na raiz com:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=SUA_PROJECT_URL
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=SUA_PUBLISHABLE_KEY
+
 
 ## Páginas
 

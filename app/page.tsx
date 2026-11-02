@@ -1,6 +1,6 @@
+import { Suspense } from "react";
 import Link from "next/link";
-import GestaoCatalogo from "./components/GestaoCatalogo";
-import { produtos } from "@/lib/produtos";
+import CatalogoBanco from "./components/CatalogoBanco";
 
 export default function Home() {
   return (
@@ -110,7 +110,18 @@ export default function Home() {
             Não representam estoque, preços ou compatibilidade reais.
           </p>
 
-          <GestaoCatalogo produtosIniciais={produtos} somenteConsulta />
+          <Suspense
+  fallback={
+    <p
+      role="status"
+      className="mt-8 rounded-2xl border border-white/10 p-6 text-slate-400"
+    >
+      Carregando produtos...
+    </p>
+  }
+>
+  <CatalogoBanco />
+</Suspense>
         </section>
 
         <section

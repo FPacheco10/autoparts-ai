@@ -95,6 +95,14 @@ A implementação inicial passou pelas duas verificações.
 - Campos com rótulos e indicação da quantidade de resultados.
 - Layout responsivo com Tailwind CSS.
 
+
+## Páginas
+
+- `/`: catálogo com busca, filtros e detalhes dos produtos.
+- `/gerenciar`: cadastro, edição e exclusão dos produtos salvos no navegador.
+
+A página de gerenciamento é demonstrativa e ainda não possui autenticação.
+
 ## Limitações atuais
 
 O cadastro é demonstrativo e fica salvo apenas no navegador utilizado.

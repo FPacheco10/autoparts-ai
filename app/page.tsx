@@ -25,6 +25,12 @@ export default function Home() {
             >
               Sobre o projeto
             </a>
+            <Link
+  href="/gerenciar"
+  className="text-slate-300 transition hover:text-orange-400"
+>
+  Gerenciar
+</Link>
           </nav>
         </div>
       </header>
@@ -104,7 +110,7 @@ export default function Home() {
             Não representam estoque, preços ou compatibilidade reais.
           </p>
 
-          <GestaoCatalogo produtosIniciais={produtos} />
+          <GestaoCatalogo produtosIniciais={produtos} somenteConsulta />
         </section>
 
         <section

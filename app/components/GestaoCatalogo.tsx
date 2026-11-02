@@ -125,8 +125,10 @@ function salvarProdutos(produtos: Produto[]) {
 
 export default function GestaoCatalogo({
   produtosIniciais,
+  somenteConsulta = false,
 }: {
   produtosIniciais: Produto[];
+  somenteConsulta?: boolean;
 }) {
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
@@ -317,12 +319,25 @@ export default function GestaoCatalogo({
     }
   }
 
+    if (somenteConsulta) {
+    return (
+      <div>
+        {dadosInvalidos && (
+          <p role="alert" className="mt-5 text-sm text-red-300">
+            Não foi possível ler os produtos cadastrados.
+            Apenas os exemplos iniciais estão sendo exibidos.
+          </p>
+        )}
+
+        <Catalogo produtos={produtos} />
+      </div>
+    );
+  }
+
   return (
     <div>
       <section
         id="formulario-produto"
-        aria-labelledby="titulo-formulario"
-        className="mt-8 scroll-mt-8 rounded-2xl border border-white/10 bg-slate-900 p-6"
       >
         <h3
           id="titulo-formulario"

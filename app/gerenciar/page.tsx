@@ -1,8 +1,22 @@
+import { Suspense } from "react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 import GestaoCatalogo from "@/app/components/GestaoCatalogo";
+import BotaoSair from "@/app/components/BotaoSair";
 import { produtos } from "@/lib/produtos";
+import { connection } from "next/server";
 
-export default function GerenciarPage() {
+async function AreaGerenciamento() {
+  await connection();
+
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.auth.getClaims();
+
+  if (error || !data?.claims?.sub) {
+    redirect("/login");
+  }
   return (
     <div className="min-h-screen bg-slate-950 font-sans text-slate-100">
       <header className="border-b border-white/10">
@@ -11,12 +25,16 @@ export default function GerenciarPage() {
             AutoParts <span className="text-orange-400">AI</span>
           </Link>
 
-          <Link
-            href="/"
-            className="rounded-lg px-3 py-2 text-sm text-orange-400 hover:bg-slate-800 focus-visible:outline-2 focus-visible:outline-orange-400"
-          >
-            ← Voltar ao catálogo
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="text-sm text-orange-400 hover:text-orange-300"
+            >
+              ← Voltar ao catálogo
+            </Link>
+
+            <BotaoSair />
+          </div>
         </div>
       </header>
 
@@ -31,15 +49,34 @@ export default function GerenciarPage() {
 
         <p className="mt-4 max-w-2xl leading-7 text-slate-400">
           Cadastre, edite e exclua produtos demonstrativos.
-          As alterações ficam salvas apenas neste navegador.
+          As alterações desta área ainda ficam salvas apenas neste
+          navegador.
         </p>
 
         <p className="mt-4 rounded-xl border border-orange-400/20 bg-orange-400/5 p-4 text-sm leading-6 text-orange-200">
-          Área demonstrativa sem autenticação. Use apenas dados fictícios.
+          Sessão autenticada. O gerenciamento ainda utiliza armazenamento
+          local e não altera os produtos do catálogo no Supabase.
         </p>
 
         <GestaoCatalogo produtosIniciais={produtos} />
       </main>
     </div>
+  );
+}
+
+export default function GerenciarPage() {
+  return (
+    <Suspense
+      fallback={
+        <main
+          role="status"
+          className="min-h-screen bg-slate-950 px-6 py-16 text-slate-300"
+        >
+          Verificando acesso...
+        </main>
+      }
+    >
+      <AreaGerenciamento />
+    </Suspense>
   );
 }

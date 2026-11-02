@@ -115,7 +115,12 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=SUA_PUBLISHABLE_KEY
 - `/`: catálogo com busca, filtros e detalhes dos produtos.
 - `/gerenciar`: cadastro, edição e exclusão dos produtos salvos no navegador.
 
-A página de gerenciamento é demonstrativa e ainda não possui autenticação.
+A página `/gerenciar` exige login com uma conta do projeto Supabase.
+A sessão é validada no servidor, com renovação de cookies pelo Proxy.
+O botão Sair encerra a sessão neste navegador.
+
+As permissões de administrador ainda não foram implementadas.
+O gerenciamento continua usando localStorage e não altera o banco.
 
 ## Limitações atuais
 

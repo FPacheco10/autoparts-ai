@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Catalogo from "./components/Catalogo";
+import GestaoCatalogo from "./components/GestaoCatalogo";
 import { produtos } from "@/lib/produtos";
 
 export default function Home() {
@@ -104,7 +104,7 @@ export default function Home() {
             Não representam estoque, preços ou compatibilidade reais.
           </p>
 
-          <Catalogo produtos={produtos} />
+          <GestaoCatalogo produtosIniciais={produtos} />
         </section>
 
         <section

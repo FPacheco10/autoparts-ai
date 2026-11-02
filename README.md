@@ -14,6 +14,8 @@ Projeto de portfólio de Felipe Pacheco, criado para aplicar conhecimentos de de
 - Mensagem para buscas sem resultados.
 - Botão para limpar os filtros.
 - Detalhes expansíveis dos produtos, com marca, aplicação e descrição demonstrativas.
+- Cadastro demonstrativo com validação de campos e código único.
+- Persistência dos cadastros no navegador usando localStorage.
 
 ## Tecnologias
 
@@ -79,6 +81,7 @@ A implementação inicial passou pelas duas verificações.
 - `app/components/Catalogo.tsx`: catálogo interativo com busca e filtros.
 - `app/globals.css`: estilos globais.
 - `app/layout.tsx`: layout principal da aplicação.
+- `app/components/GestaoCatalogo.tsx`: formulário de cadastro e persistência local.
 
 ## Conceitos aplicados
 
@@ -92,10 +95,12 @@ A implementação inicial passou pelas duas verificações.
 
 ## Limitações atuais
 
-Os produtos são exemplos definidos no código. Não representam estoque, preços ou compatibilidade reais.
+O cadastro é demonstrativo e fica salvo apenas no navegador utilizado.
+Não há sincronização entre dispositivos. Limpar os dados do navegador
+remove os produtos cadastrados.
 
-Esta versão ainda não possui banco de dados, autenticação, cadastro de produtos, integração com WhatsApp ou recursos de inteligência artificial.
-
+Esta versão ainda não possui banco de dados, autenticação, edição de
+produtos, integração com WhatsApp ou recursos de inteligência artificial.
 ## Próximas etapas
 
 - [x ] Exibir detalhes dos produtos.
